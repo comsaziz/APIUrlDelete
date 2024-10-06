@@ -82,6 +82,7 @@ function Character() {
         </form>
       </div>
     </div>
+    
   );
 }
 

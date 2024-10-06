@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [photos, setPhotos] = useState([]);
   const [alert, setAlert] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [search, setSearch] = useState("");
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     axios
@@ -77,12 +77,20 @@ function Home() {
               <p className="mt-4 text-center text-lg font-semibold text-gray-700">
                 {task.gender}
               </p>
-              <button
-                onClick={() => handleDeleteClick(task.id)}
-                className="mt-4 w-full py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
-              >
-                Delete
-              </button>
+              <div className="flex justify-between mt-4">
+                <button
+                  onClick={() => handleDeleteClick(task.id)}
+                  className="py-2 px-4 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => navigate(`/update/${task.id}`)}
+                  className="py-2 px-4 bg-purple-600 text-white rounded-lg hover:bg-purple-600 transition"
+                >
+                  Update
+                </button>
+              </div>
             </div>
           ))
         ) : (
@@ -92,7 +100,6 @@ function Home() {
         )}
       </div>
 
-     
       <div className="mt-8 text-center">
         <button
           onClick={() => navigate("/character")} 
